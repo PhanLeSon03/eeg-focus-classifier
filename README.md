@@ -38,20 +38,26 @@ python gen_features_npy.py
 
 ### Train neural network models
 set sesssion_ind = True/False for session-independence/session-dependence 
+
 set FullChannels = True/False for full channels/ 6 channels
 ```
 python train_nn_DRNN.py
 ```
 For subject-independence
+
 set FullChannels = True/False for full channels/ 6 channels
+```
 python train_nn_DRNN_LOSO.py
+```
 
 ### Evaluate the model: `validate_RNN.ipynb`
 
 ### Train XGBoost models
-set LOSO = TRUE for subject-independence ELSE
-    set sesssion_ind = True/False for session-independence/session-dependence 
-    set FullChannels = True/False for full channels/ 6 channels
+set LOSO = TRUE for subject-independence 
+
+set sesssion_ind = True/False for session-independence/session-dependence 
+
+set FullChannels = True/False for full channels/ 6 channels
 ```    
 python train_XGBoost.py
 ```

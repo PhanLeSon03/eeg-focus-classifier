@@ -26,6 +26,8 @@ segment_len = 64
 label_map = {'unfocused': 1, 'drowsed': 0,'focused': 2}
 subject_specs_dicts = np.load(f'Features/features_labels_{ts}_14c.npy', allow_pickle=True).item()
 
+sesssion_ind = True
+
 FullChannels = True
 if FullChannels==True:
     Plot_Channels = ['AF3', 'F7', 'F3', 'FC5', 'T7', 'P7', 'O1', 'O2', 'P8', 'T8', 'FC6', 'F4', 'F8', 'AF4']
@@ -147,7 +149,7 @@ Channels_idx = [map_indexes[Ch] for Ch in Plot_Channels]
 
 results = []
 batch_size = 32
-sesssion_ind = True
+
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 results = []
 print(f'Session independent: {sesssion_ind}')

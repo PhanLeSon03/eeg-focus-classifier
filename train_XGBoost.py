@@ -148,20 +148,22 @@ def save_welch_data(df, window_size, sampling_rate):
     return np.array(features), np.array(labels), save_to_csv
 
 
-# csv_path = 'preprocessed_eeg_data.csv'
+if True: # only run one time
+    csv_path = 'preprocessed_eeg_data.csv'
 
-# df = preprocess_dataset(csv_path)
+    df = preprocess_dataset(csv_path)
 
-# print(df.shape)
-# df.head()
+    print(df.shape)
+    df.head()
 
-# window_size = 8*sampling_rate
-# _, _, save_to_csv = save_welch_data(df, window_size, sampling_rate)
-# df_welch = pd.DataFrame(save_to_csv)
-# df_welch = df_welch.sort_values(by=['state','filename']).reset_index(drop=True)
-# df_welch.to_csv('welch_data_8s_14c.csv', index=False, header=True, encoding='utf-8')
-# del df
-# gc.collect()
+    window_size = 8*sampling_rate
+    _, _, save_to_csv = save_welch_data(df, window_size, sampling_rate)
+    df_welch = pd.DataFrame(save_to_csv)
+    df_welch = df_welch.sort_values(by=['state','filename']).reset_index(drop=True)
+    df_welch.to_csv('welch_data_8s_14c.csv', index=False, header=True, encoding='utf-8')
+    del df
+    gc.collect()
+    
 def create_features_without_initial(df, frame_size=64, hop=2, pad_last=False, features_to_add =None):
     """
     Build fixed-length windows per file and return (X, y) ready for ML models.
@@ -242,7 +244,7 @@ SUBJECT_RANGES = {
 
 LOSO = True
 sesssion_ind = True
-FullChannels = True
+FullChannels = False
 
 if FullChannels==True:
     Plot_Channels = ['AF3', 'F7', 'F3', 'FC5', 'T7', 'P7', 'O1', 'O2', 'P8', 'T8', 'FC6', 'F4', 'F8', 'AF4']
@@ -431,8 +433,6 @@ else:
   
 
 results_df = pd.DataFrame(save_dict) # pd.DataFrame({'random_state': range(100), 'acc_train': accurac
-
-
 
 max_index = results_df["acc_test"].idxmax()
 acc_test =  results_df["acc_test"][max_index]
