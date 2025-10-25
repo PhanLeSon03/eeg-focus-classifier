@@ -159,7 +159,7 @@ if True: # only run one time
     window_size = 8*sampling_rate
     _, _, save_to_csv = save_welch_data(df, window_size, sampling_rate)
     df_welch = pd.DataFrame(save_to_csv)
-    df_welch = df_welch.sort_values(by=['state','filename']).reset_index(drop=True)
+    # df_welch = df_welch.sort_values(by=['state','filename']).reset_index(drop=True)
     df_welch.to_csv('welch_data_8s_14c.csv', index=False, header=True, encoding='utf-8')
     del df
     gc.collect()
